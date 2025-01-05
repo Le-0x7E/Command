@@ -1,0 +1,16 @@
+mkdir demo					//创建demo文件夹
+cd demo					//进入demo文件夹(同级磁盘下才能用cd)
+cd ..							//返回上级文件夹
+rmdir /s /q demo				//删除文件夹，rd也行，/s 表示删除指定文件夹及其中所有文件夹和文件，/q 表示不需要确认
+echo xxx > file.txt			//将xxx写入文件file.txt
+echo xxx >> file.txt			//将xxx加入文件file.txt后面
+del file.txt					//删除file.txt
+del *.*						//删除当前目录所有文件，包含文件夹的话要在*.*前加/s
+D:							//切换到D盘
+type textfile.txt				//输出文本文件内容
+findstr "Hello" textfile.txt		//从textfile.txt中找出包含Hello的行输出
+ssh-keygen -t rsa -C "email"	//生成ssh密钥
+code .						//在VSCode中打开当前目录
+
+
+
