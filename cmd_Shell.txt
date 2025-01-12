@@ -1,0 +1,29 @@
+cat /etc/shells						//显示系统中所有的Shell版本
+echo $HOME/$PATH/$SHELL/$0		//显示当前用户家目录/系统查找路径/系统默认shell/正在执行的脚本名称
+chmod a+x <name>.sh				//执行前要先加执行权限，或使用bash <name>.sh来执行
+source <filen_ame>					//重新加载某文件
+shuf -i 1-10 -n 1						//生成一个1-10之间的随机数
+echo $RANDOM						//RANDOM系统变量每次调用会返回一个0~32767的值
+echo "xxx"							//输出(回显)xxx
+date								//输出当前日期时间
+
+//Shell脚本一般以.sh为拓展名，第一行指示使用什么Shell，例如"#!/bin/bash"，系统会自动调用该Shell
+//Shell脚本支持分支循环、函数定义、文件读写、调用其他程序等功能，Shell脚本变量默认是全局的，定义局部变量要加local
+//支持给脚本传参，如：./<name>.sh param1 param2，这些参数在脚本中用$1, $2来使用, 更多见下：
+   $0表示脚本名称, $#传递的参数个数, $?上一命令返回值，0正常, $*传递的参数，双引号包围时作为一个整体, 
+   $@传递的参数, $$当前Shell进程的PID, $!最后一个后台命令的PID, $1-n脚本参数
+//可设置临时环境变量：export 变量名=值，脚本可直接读取临时环境变量，当前窗口有效，可把变量放进.bashrc文件变成永久变量
+//若需将某指令输出作为变量，需用反引号将之括起来或者用$()，如：number=`cmd`，number=$(cmd)
+
+条件判断：if [ condition ]; then			//if判断可用中括号，condition两边要有空格，判断方法见下，例: $Sum -lt 2(Sum小于2)
+			operate					//-lt(less than)小于; -le小于等于; -gt大于; -ge大于等于; -eq等于; ne不等于; 
+		   else						//condition：[]是最基本的条件测试表达式, [[]]是扩展测试命令, (())是数学表达式
+			operate					//condition可以像C语言那样判断多个条件或||，与&&，非！
+		   fi
+条件循环：for ((i=0; i<num; i++)); do	//for循环和while循环类似，循环体要被do (operate) done包起来
+			operate					//可使用continue和break控制循环是否继续
+		   done
+
+
+
+

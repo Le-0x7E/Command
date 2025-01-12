@@ -8,27 +8,27 @@ rm		//删除文件、目录，可加参数: -i删除前确认; -r递归删除目
 mv <source> <dest>				//移动或重命名文件，可加-f强制
 cp <source> <dest>				//复制文件，可加-f强制，对文件夹要加-r递归
 ln <source> <dest>				//创建链接文件，默认硬链接，ln后加参数-s则创建软链接
-chmod u/g/o+/-r/w/x <文件名>	//修改文件权限(change mode)，u拥有者/g组/o其他/不加(全部), +添加/-删除, r读/w写/x执行
+chmod u/g/o+/-r/w/x <文件名>	//修改文件权限(change mode)，u拥有者/g组/o其他/不加或a(全部), +添加/-删除, r读/w写/x执行
 chmod xxx <文件名>				//修改文件权限，xxx分别表示ugo的权限和，r4, w2, x1
 chown user[:group] file			//修改文件所有者和关联组(如chown root file，把file所有者改为root)
 chgrp group file					//修改文件所属群组
 touch <文件名>					//更新文件修改时间，若无则创建
 
-echo "xxx" > file.txt				//将xxx写入文件file.txt
-echo "xxx" >> file.txt				//将xxx加入文件file.txt后面
-cat <filename>					//连接文件并在标准输出上输出，不指定文件或指定为"-"则从标准输入读取，加-n显示行号
-more <filename>					//分页阅览文件，空格下一页，b上一页
-less <filename>					//more的增强版，支持翻页和搜索，如查看进程信息并分页显示：ps -ef | less
-head -n <filename>				//输出文件前n行，不加则默认10行
-tail -n <filename>				//输出文件后n行，不加则默认10行，可加-f(--fllow)输出实时添加的内容
+echo "xxx" > file.txt		//将xxx写入文件file.txt
+echo "xxx" >> file.txt		//将xxx加入文件file.txt后面
+cat <filename>			//连接文件并在标准输出上输出，不指定文件或指定为"-"则从标准输入读取，加-n显示行号
+more <filename>			//分页阅览文件，空格下一页，b上一页
+less <filename>			//more的增强版，支持翻页和搜索，如查看进程信息并分页显示：ps -ef | less
+head -n <filename>		//输出文件前n行，不加则默认10行
+tail -n <filename>		//输出文件后n行，不加则默认10行，可加-f(--fllow)输出实时添加的内容
 
-useradd <username>				//创建用户账户，加-g指定组(如-g root)，加-d指定home目录
-passwd <username>				//创建或修改用户账户密码，不加username则默认当前用户
-userdel -r <username>			//删除用户账户，并递归删除其用户目录及所有文件
-groupadd <group>				//创建用户组，删除用groupdel
-whoami							//显示当前用户名称
-sudo <cmd>						//以管理员权限执行命令
-ls --color=auto					//启用颜色输出
+useradd <username>		//创建用户账户，加-g指定组(如-g root)，加-d指定home目录
+passwd <username>		//创建或修改用户账户密码，不加username则默认当前用户
+userdel -r <username>	//删除用户账户，并递归删除其用户目录及所有文件
+groupadd <group>		//创建用户组，删除用groupdel
+whoami					//显示当前用户名称
+sudo <cmd>				//以管理员权限执行命令
+ls --color=auto			//启用颜色输出
 
 ps						//查看进程状态(process status)，查找某进程：ps -ef | grep 关键字
 kill <PID>				//终止进程
@@ -52,7 +52,7 @@ xargs				//传参过滤器, 可组合命令, 例: 当前目录下找所有c源�
 which <file>			//在环境变量$path设置的目录中找文件
 whereis [p] <file>	//查找源码、二进制文件或帮助文件，加-B找二进制文件，-S源码，-M说明文件
 
-ssh-keygen -t rsa -b 4096			//用rsa协议生成4096b的ssh密钥，如非首次创建需要如下配置
+ssh-keygen -t rsa -b 4096		//用rsa协议生成4096b的ssh密钥，如非首次创建需要如下配置
 
 tail -5 conifg
 # github

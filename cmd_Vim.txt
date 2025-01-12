@@ -25,4 +25,4 @@ u					//撤销(undo)相当于Ctrl+Z
 快捷键
 Ctrl+f, b, u, d			//翻页，向前一页(forward)，向后一页(backward)，向上半页(up)，向下半页(down)
 
-.vimrc文件保存vim的配置信息
+.vimrc文件保存vim的配置信息，可将一些常用配置写入其中

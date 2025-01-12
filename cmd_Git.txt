@@ -3,31 +3,32 @@ git config --global user.email email			//配置邮箱
 git config --global credential.helper store	//保存用户信息
 git config --global --list					//查看用户信息
 
-git init <name>			//创建本地仓库，不加name则在当前目录创建
-git clone <url>			//克隆远程仓库
+git init <name>				//创建本地仓库，不加name则在当前目录创建
+git clone <url>				//克隆远程仓库
 
-git status				//查看仓库状态，可加-s简化输出，简化后第一列为暂存区状态，第二列为工作区状态
-git add *.txt				//把所有txt文件添加到暂存区
-git add .					//把当前目录所有文件添加到暂存区
-git restore --staged <file>	//撤销暂存区文件，重放回工作区
-git ls-files				//查看暂存区内容
-git mv <file> <file2>		//移动一个文件到新位置
-git rm file.txt				//从工作区和暂存区删除file.txt
-git rm --cached file.txt	//从暂存区删除文件
-git rm -r*				//递归删除某目录下所有子目录和文件，删除后记得提交
-git commit -m xxx		//提交，说明信息为xxx
-git commit -a -m xxx		//添加暂存并提交
-git log					//查看提交记录，可加--oneline输出简洁化
-git reset	 --soft id			//回退到id版本，保留工作区和暂存区所有修改内容
-git reset	 --hard HEAD~	//回退到上一版本，丢弃工作区和暂存区所有修改内容
-git reset	 --mixed id		//回退到id版本，保留工作区并丢弃暂存区修改内容，默认
-git reflog				//查看操作历史
-git diff					//比较工作区和暂存区文件差异
-git diff HEAD				//比较工作区和版本库文件差异
-git diff --cached			//比较暂存区和版本库文件差异
-git diff id id				//比较两个版本的差异，可换成分支名比较分支差异
-git diff HEAD~1 HEAD	//比较当前版本和上一个版本的差异，后面加文件名则只比较该文件的变化
-echo xxx > .gitignore		//把文件名添加进.gitignore文件中，git便会忽略此文件，可用通配符，还有更多匹配规则
+git status					//查看仓库状态，可加-s简化输出，简化后第一列为暂存区状态，第二列为工作区状态
+git add *.txt					//把所有txt文件添加到暂存区
+git add .						//把当前目录所有文件添加到暂存区
+git restore --staged <file>		//撤销暂存区文件，重放回工作区
+git ls-files					//查看暂存区内容
+git mv <file> <file2>			//移动一个文件到新位置
+git rm file.txt					//从工作区和暂存区删除file.txt
+git rm --cached file.txt		//从暂存区删除文件
+git rm -r*					//递归删除某目录下所有子目录和文件，删除后记得提交
+git commit -m xxx			//提交，说明信息为xxx
+git commit -a -m xxx			//添加暂存并提交
+git log						//查看提交记录，可加--oneline输出简洁化
+git reset	 --soft id				//回退到id版本，保留工作区和暂存区所有修改内容
+git reset	 --hard HEAD~		//回退到上一版本，丢弃工作区和暂存区所有修改内容
+git reset	 --mixed id			//回退到id版本，保留工作区并丢弃暂存区修改内容，默认
+git reflog					//查看操作历史
+
+git diff						//比较工作区和暂存区文件差异
+git diff HEAD					//比较工作区和版本库文件差异
+git diff --cached				//比较暂存区和版本库文件差异
+git diff id id					//比较两个版本的差异，可换成分支名比较分支差异
+git diff HEAD~1 HEAD		//比较当前版本和上一个版本的差异，后面加文件名则只比较该文件的变化
+echo xxx > .gitignore			//把文件名添加进.gitignore文件中，git便会忽略此文件，可用通配符，还有更多匹配规则
 
 git remote add <shortname> <url>			//添加一个远程仓库
 git branch -M main							//指定分支名称为main
@@ -41,18 +42,18 @@ git pull --rebase								//将本地改动代码rebase到远程仓库的最新�
 git fetch <remote-name>						//获取所有远程分支，后面可加上远程分支名以指定
 git branch -r									//查看远程分支
 
-git branch									//查看本地仓库所有分支
-git branch  <branch-name>					//创建名为name的分支
-git branch -d <branch-name>					//删除name分支，-d表示删除已经合并完的分支，-D可以强制删除未合并的
-git switch  <branch-name>					//切换到name分支，也可以用git checkout
-git merge <branch-name>					//把name分支合并至当前所在的分支
-git merge --abort							//合并出现冲突后终止合并，若不想终止则修改冲突后commit
-git log --graph --oneline --decorate --all		//显示分支图
-git checkout -b <name> id					//恢复删除的name分支，id为name分支的某个提交记录
-git checkout <file> id							//将一个文件恢复到之前的版本
-git rebase <branch-name>					//当前分支变基到目标分支，把公共结点后当前分支接在目标分支最新记录后
-git squash <branch-name>					//合并所有提交到一个提交
-git tag										//给当前提交打标签，一般用来标记版本号
+git branch								//查看本地仓库所有分支
+git branch  <branch-name>				//创建名为name的分支
+git branch -d <branch-name>				//删除name分支，-d表示删除已经合并完的分支，-D可以强制删除未合并的
+git switch  <branch-name>				//切换到name分支，也可以用git checkout
+git merge <branch-name>				//把name分支合并至当前分支, 加--no-ff禁用fastfoward模式, 去掉no启用, 加-m带信息
+git merge --abort						//合并出现冲突后终止合并，若不想终止则修改冲突后commit
+git log --graph --oneline --decorate --all	//显示分支图
+git checkout -b <name> id				//恢复删除的name分支，id为name分支的某个提交记录
+git checkout <file> id						//将一个文件恢复到之前的版本
+git rebase <branch-name>				//当前分支变基到目标分支，把公共结点后当前分支接在目标分支最新记录后
+git squash <branch-name>				//合并所有提交到一个提交
+git tag									//给当前提交打标签，一般用来标记版本号
 
 git stash save "message"	//保存现场, 后续可恢复, 加-u算上未跟踪文件, -a所有文件(包括未跟踪和忽略文件), save表示信息, 可省略
 git stash list				//查看所有stash
