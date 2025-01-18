@@ -11,6 +11,3 @@ type textfile.txt				//输出文本文件内容
 findstr "Hello" textfile.txt		//从textfile.txt中找出包含Hello的行输出
 ssh-keygen -t rsa -C "email"	//生成ssh密钥
 code .						//在VSCode中打开当前目录
-
-
-
