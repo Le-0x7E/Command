@@ -1,0 +1,36 @@
+ftp					//打开ftp，后面加-h可以看帮助
+进入ftp后:
+?					//查看指令
+open <ip>			//连接服务器
+status				//查看ftp状态
+dir					//查看目录
+put FILE				//上传文件
+get FILE				//下载文件
+mget FILE			//下载多个文件，文件名可用通配符
+delete FILE			//删除文件
+mkdir <dir>			//创建文件夹
+disconnect			//断开连接
+
+//使用ftp需要先安装ftp服务器软件，如vsftpd
+sudo apt-get install vsftpd  	# 对于使用apt的系统
+sudo yum install vsftpd      		# 对于使用yum的系统
+//启动ftp服务
+sudo systemctl start vsftpd	# 对于使用systemctl命令的系统
+sudo service vsftpd start		# 对于使用service命令的系统
+//验证FTP服务是否已成功启动
+sudo systemctl status vsftpd	# 对于使用systemctl命令的系统
+sudo service vsftpd status		# 对于使用service命令的系统
+//添加ftp用户
+sudo useradd -m -d /home/ftpuser -s /sbin/nologin ftpuser	#-m创建用户目录, -d指定路径, -s /sbin/nologin禁止用shell登录
+sudo passwd ftpuser										#设置密码
+//配置vsftpd，在/etc/vsftpd/vsftpd.conf中查看
+chroot_local_user=YES		#把用户限制在自己的主目录中
+anonymous_enable=NO		#禁用匿名访问
+local_enable=YES				#允许本地用户登录
+//创建FTP目录并设置权限
+sudo mkdir -p /home/ftpuser/files
+sudo chown -R ftpuser:ftpuser /home/ftpuser/files
+sudo chmod -R 755 /home/ftpuser/files
+//重启vsftpd服务
+sudo systemctl restart vsftpd
+

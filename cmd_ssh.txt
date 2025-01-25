@@ -1,0 +1,16 @@
+ssh user@ip					//使用user用户名通过ssh连接ip
+
+//通常，SSH连接会要求输入密码。为了安全起见，推荐使用密钥对进行认证，这样就不需要在每次连接时输入密码。
+ssh-keygen -t rsa -b 2048		//使用ssh-keygen命令生成密钥对
+
+//生成密钥后，需要将公钥（位于~/.ssh/id_rsa.pub）复制到远程服务器的~/.ssh/authorized_keys文件中。可以使用以下命令完成这个操作：
+ssh-copy-id user@ip			//将公钥复制到服务器
+
+//将公钥添加到远程服务器的~/.ssh/authorized_keys文件中后，就可以使用以下命令无密码登录了：
+ssh user@ip					//无密码登录
+
+//如果你的SSH服务运行在非标准端口（默认是22），你可以使用-p选项指定端口号：
+ssh -p port user@ip			//指定端口号
+
+ssh -o ServerAliveInterval=180 user@ip		//在长时间不活动的会话中保持连接，每180秒发送一个心跳包以防止连接超时。
+ssh -F /path/to/config_file user@ip			//通过指定配置文件连接，如~/.ssh/config，配置文件中可以定义主机别名和对应的连接选项。
