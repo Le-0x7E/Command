@@ -21,7 +21,7 @@ docker version					//显示docker版本信息，docker启动后可看到Client�
 docker info						//查看系统信息
 docker --help					//查看帮助文档，
 docker login/logout				//登录/退出DockerHub
-systemctl stat docker				//启动docker
+systemctl start docker				//启动docker
 systemctl stop docker			//关闭docker
 systemctl enable docker			//设置开机启动
 service docker restart				//重启服务

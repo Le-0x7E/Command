@@ -1,4 +1,5 @@
 tracert						//路由追踪
+arp -a						//使用ARP协议地址解析
 mkdir demo					//创建demo文件夹
 cd demo					//进入demo文件夹(同级磁盘下才能用cd)
 cd ..							//返回上级文件夹

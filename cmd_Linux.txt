@@ -21,6 +21,7 @@ more <filename>			//分页阅览文件，空格下一页，b上一页
 less <filename>			//more的增强版，支持翻页和搜索，如查看进程信息并分页显示：ps -ef | less
 head -n <filename>		//输出文件前n行，不加则默认10行
 tail -n <filename>		//输出文件后n行，不加则默认10行，可加-f(--fllow)输出实时添加的内容
+nohup command &		//让程序忽略挂起信号(关闭终端仍能运行)，并将输出重定向到nohup.out中
 
 useradd <username>		//创建用户账户，加-g指定组(如-g root)，加-d指定home目录
 passwd <username>		//创建或修改用户账户密码，不加username则默认当前用户
@@ -46,13 +47,16 @@ gunzip [p] <file/dir>		//解压拓展名为.gz的文件
 zip [p] name.zip <file/dir>	//压缩zip文件，加-q -r递归，加-dv可从压缩包中删除某文件
 unzip [p] name.zip		//解压zip文件，加-v仅查看内容不解压
 
-find <dir> <key> 	//指定目录下查找文件或目录, -name key按名, -type f/d/l按类型, -size +/-size按大小, -mtime +/-day按日期
-grep [p] key <file>	//查找文件中符合条件的内容，加-i忽略大小写，-n显示目标行号，-r递归查找子目录文件
-xargs				//传参过滤器, 可组合命令, 例: 当前目录下找所有c源文件中key: find -type f -name "*.c" | xargs grep -i -n "key"
-which <file>			//在环境变量$path设置的目录中找文件
-whereis [p] <file>	//查找源码、二进制文件或帮助文件，加-B找二进制文件，-S源码，-M说明文件
+find <dir> <key> 		//指定目录下查找文件或目录, -name key按名, -type f/d/l按类型, -size +/-size按大小, -mtime +/-day按日期
+grep [p] key <file>		//查找文件中符合条件的内容，加-i忽略大小写，-n显示目标行号，-r递归查找子目录文件
+xargs					//传参过滤器, 可组合命令, 例: 当前目录下找所有c源文件中key: find -type f -name "*.c" | xargs grep -i -n "key"
+which <file>				//在环境变量$path设置的目录中找文件
+whereis [p] <file>		//查找源码、二进制文件或帮助文件，加-B找二进制文件，-S源码，-M说明文件
 
-ssh-keygen -t rsa -b 4096		//用rsa协议生成4096b的ssh密钥，如非首次创建需要如下配置
+sudo netstat -tulnp | grep <prot>	//查看某端口号被哪个应用占用
+
+
+ssh-keygen -t rsa -b 4096			//用rsa协议生成4096b的ssh密钥，如非首次创建需要如下配置
 
 tail -5 conifg
 # github
